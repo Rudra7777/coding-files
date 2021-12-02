@@ -1,0 +1,110 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int num;
+int generaterandomNumber(int n)
+{
+    srand(time(NULL));
+    return rand() % n;
+}
+int main()
+{
+    int p1 = 0, p2 = 0;
+    char name[30];
+    int input1, input2,count;
+    printf("---------------ROCK PAPER SCISSORS GAME--------------\n");
+    printf("ENTER YOUR NAME:\n");
+    scanf("%s", &name);
+    printf("How many times do you want to play:\n");
+    scanf("%d",&count);
+
+
+    for (int i = 0; i < count; i++)
+    {
+        printf("YOUR TURN..............\n");
+        printf("CHOOSE\n 0 for ROCK\n1 for PAPER\n2 for SCISSORS\n");
+        scanf("%d", &input1);
+        if (input1>2)
+        {
+            printf("INVALID INPUT\n");
+            break;
+        }
+        
+        printf("COMPUTER'S TURN............\n");
+        input2 = generaterandomNumber(3);
+
+        switch (input1)
+        {
+        case 0:
+
+        {
+            if (input2 == 0)
+            {
+                printf("TIE\n--------------------------\n");
+            }
+            else if (input2 == 1)
+            {
+
+                p2++;
+            }
+            else if (input2 == 2)
+            {
+
+                p1++;
+            }
+            continue;
+        }
+        case 1:
+        {
+            if (input2 == 1)
+            {
+                printf("TIE\n--------------------------\n");
+            }
+            else if (input2 == 0)
+            {
+
+                p2++;
+            }
+            else if (input2 == 2)
+            {
+
+                p1++;
+            }
+            continue;
+        }
+        case 2:
+        {
+            if (input2 == 2)
+            {
+                printf("TIE\n--------------------------\n");
+            }
+            else if (input2 == 0)
+            {
+
+                p2++;
+            }
+            else if (input2 == 1)
+            {
+
+                p1++;
+            }
+            continue;
+        }
+        default:
+            break;
+        }
+    }
+    printf("POINTS TABLE\n");
+    printf("%s's points:%d\n", name, p1);
+    printf("Computers's points:%d\n", p2);
+    if (p1 > p2)
+    {
+        printf("%s WINS THE GAME\n", name);
+    }
+    else if (p1 < p2)
+    {
+        printf("Computer WINS THE GAME\n");
+    }
+
+    return 0;
+}
